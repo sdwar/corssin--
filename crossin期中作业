@@ -13,8 +13,8 @@
 #           游戏结束，保存玩家游戏次数（原游戏次数+本次游戏次数），总轮数（原轮数+本次轮数）
 # 关闭文件
 #用到的知识点：输入输出，循环（循环内添加变量），条件判断
+#             文件读取，文件内容更新，文件保存
 #盲点:如何对输入有效性做检测，打包exe文件
-#盲点:如何进行文件处理，记录数据，更新数据
 
 # f=open("玩家游戏成绩记录.txt","w")
 # f.write("name,0,0,0")
@@ -38,7 +38,10 @@ if times!=0:
     average_times = times / total_times
 else:
     average_times=0
-print("%s,你好，你已经玩了%d次，平均%.2f猜中一次"%(name,total_times,average_times))
+if name not in scores.keys():
+    print("你好,%s!\n欢迎新玩家"%(name))
+else:
+    print("%s,你好，欢迎回来！\n你已经玩了%d次，平均%.2f猜中一次"%(name,total_times,average_times))
 while True:
     choice = input("1:开始游戏 2：退出游戏\n")
     if choice=="1":
